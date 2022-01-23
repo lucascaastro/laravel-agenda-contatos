@@ -15,6 +15,6 @@
 
     <a href="/contacts/edit/{{ $contacts->id }}">Editar</a><br><br>
 
-    <a href="/contacts/destroy/{{ $contacts->id }}">Deletar</a> <br><br>
+    <a href="/contacts/delete/{{ $contacts->id }}">Deletar</a> <br><br>
 </body>
 </html>

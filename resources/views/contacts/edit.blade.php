@@ -11,7 +11,7 @@
 <body>
   <h1>Editar Contato</h1>
 
-    <a href="/contacts/destroy/{{ $contacts->id }}">Deletar</a> <br><br>
+    <a href="/contacts/delete/{{ $contacts->id }}">Deletar</a> <br><br>
 
   <form action="/contacts/update/{{ $contacts->id }}" method="POST">
     @csrf

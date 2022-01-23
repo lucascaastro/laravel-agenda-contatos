@@ -11,7 +11,7 @@
   <h1>Crie um contato</h1>
   <form action="/contacts/store" method="POST">
     @csrf
-    <input type="text" name="name" placeholder="Nome do Item">
+    <input type="text" name="name" placeholder="Nome do contato">
     <input type="text" name="email" placeholder="Email">
     <input type="text" name="phone" placeholder="Telefone">
     <button type="submit">Adicionar</button>

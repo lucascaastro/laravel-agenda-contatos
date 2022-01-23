@@ -74,7 +74,11 @@ Route::post('/contacts/update/{id}', [
     'update'
 ])->middleware('auth');
 
-Route::get('/contacts/destroy/{id}',[
+Route::get('/contacts/delete/{id}',[
     ContactController::class,
-    'destroy'
+    'delete'
 ])->middleware('auth');
+
+Route::get('/contacts/index', function () {
+    return 'Seja bem vindo';
+});
