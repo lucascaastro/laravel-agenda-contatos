@@ -9,9 +9,10 @@
 <body>
   <h1>Meus Contatos</h1>
   @foreach($contacts as $contact)
-  <p>{{ $contact->name }}</p>
-  <p>{{ $contact->email }}</p>
-  <p>{{ $contact->phone }}</p>
+  <h1>{{ $contact->name }}</h1>
+  <h1>{{ $contact->email }}</h1>
+  <h1>{{ $contact->phone }}</h1>
+  <hr>
   @endforeach
 
   <a href="contacts/create">Crie um usuário</a>

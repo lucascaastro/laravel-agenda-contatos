@@ -11,15 +11,15 @@
 <body>
   <h1>Editar Contato</h1>
 
-    <a href="/contacts/delete/{{ $contacts->id }}">Deletar</a> <br><br>
+    <a href="/contacts/delete/{{ $contact->id }}">Deletar</a> <br><br>
 
-  <form action="/contacts/update/{{ $contacts->id }}" method="POST">
+  <form action="/contacts/update/{{ $contact->id }}" method="POST">
     @csrf
-    <input name="name" placeholder="Nome" value="{{ $contacts->name }}"> <br> <br>
+    <input name="name" placeholder="Nome" value="{{ $contact->name }}"> <br> <br>
 
-    <input name="email" placeholder="email" value="{{ $contacts->email }}"> <br> <br>
+    <input name="email" placeholder="email" value="{{ $contact->email }}"> <br> <br>
 
-    <input name="phone" placeholder="Preço" value="{{ $contacts->phone }}"> <br> <br>
+    <input name="phone" placeholder="Preço" value="{{ $contact->phone }}"> <br> <br>
 
     <button type="submit">Enviar</button> <br>
   </form>

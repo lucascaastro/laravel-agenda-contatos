@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
+use function PHPUnit\Framework\isNull;
+
 class ContactController extends Controller
 {
     /**
@@ -15,7 +17,7 @@ class ContactController extends Controller
     public function index()
     {
         $user = auth()->user();
-        $contacts = Contact::where('user_id', '=' , $user->id)->get();
+        $contacts = Contact::where('user_id', '=', $user->id)->get();
 
         return view('contacts.contacts', compact('user', 'contacts'));
     }
@@ -60,9 +62,13 @@ class ContactController extends Controller
     {
         $user = auth()->user();
 
-        $contacts = Contact::find($id);
+        $contact = Contact::find($id);
 
-        return view('contacts.show', compact('user','contacts'));
+        if (!$contact || $user->id != $contact->user_id) {
+            abort(404);
+        } else {
+            return view('contacts.show', compact('user', 'contact'));
+        }
     }
 
     /**
@@ -74,9 +80,12 @@ class ContactController extends Controller
     public function edit($id)
     {
         $user = auth()->user();
-        $contacts = Contact::find($id);
-
-        return view('contacts.edit', compact('user','contacts'));
+        $contact = Contact::find($id);
+        if (!$contact || $user->id != $contact->user_id) {
+            abort(404);
+        } else {
+            return view('contacts.edit', compact('user', 'contact'));
+        }
     }
 
     /**
@@ -89,16 +98,18 @@ class ContactController extends Controller
     public function update(Request $request, $id)
     {
         $user = auth()->user();
-        $contacts = Contact::find($id);
-
-        $contacts->update([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'user_id' => $user->id
-        ]);
-
-        return redirect('/contacts');
+        $contact = Contact::find($id);
+        if (!$contact || $user->id != $contact->user_id) {
+            abort(404);
+        } else {
+            $contact->update([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'user_id' => $user->id
+            ]);
+            return redirect('/contacts');
+        }
     }
 
     /**
@@ -109,10 +120,13 @@ class ContactController extends Controller
      */
     public function delete($id)
     {
-        $contacts = Contact::find($id);
-
-        $contacts->delete();
-
-        return redirect('/contacts');
+        $user = auth()->user();
+        $contact = Contact::find($id);
+        if (!$contact || $user->id != $contact->user_id) {
+            abort(404);
+        } else {
+            $contact->delete();
+            return redirect('/contacts');
+        }
     }
 }

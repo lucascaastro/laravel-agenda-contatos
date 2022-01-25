@@ -9,12 +9,12 @@
 <body>
     <h1>Detalhes do Contato</h1>
 
-    <h2>Nome: {{ $contacts->name }}</h2>
-    <h4>Email: {{ $contacts->email }}</h4>
-    <p>Endereço: {{ $contacts->phone }}</p>
+    <h2>Nome: {{ $contact->name }}</h2>
+    <h4>Email: {{ $contact->email }}</h4>
+    <p>Endereço: {{ $contact->phone }}</p>
 
-    <a href="/contacts/edit/{{ $contacts->id }}">Editar</a><br><br>
+    <a href="/contacts/edit/{{ $contact->id }}">Editar</a><br><br>
 
-    <a href="/contacts/delete/{{ $contacts->id }}">Deletar</a> <br><br>
+    <a href="/contacts/delete/{{ $contact->id }}">Deletar</a> <br><br>
 </body>
 </html>
