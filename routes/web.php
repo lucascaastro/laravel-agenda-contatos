@@ -19,7 +19,7 @@ Route::get('/', function () {
     return 'Seja bem vindo';
 });
 
-Route::get('/login',  ([
+Route::get('/login', ([
     AuthController::class,
     'login'
 ]))->name('login');
@@ -49,12 +49,12 @@ Route::get('/contacts',  [
     'index'
 ])->middleware('auth');
 
-Route::get('/contacts/create',[
+Route::get('/contacts/create', [
     ContactController::class,
     'create'
- ])->middleware('auth');
+])->middleware('auth');
 
- Route::post('/contacts/store',[
+Route::post('/contacts/store', [
     ContactController::class,
     'store'
 ])->middleware('auth');
@@ -74,7 +74,7 @@ Route::post('/contacts/update/{id}', [
     'update'
 ])->middleware('auth');
 
-Route::get('/contacts/delete/{id}',[
+Route::get('/contacts/delete/{id}', [
     ContactController::class,
     'delete'
 ])->middleware('auth');

@@ -29,7 +29,8 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contacts.create');
+        $user = auth()->user();
+        return view('contacts.create', compact('user'));
     }
 
     /**
