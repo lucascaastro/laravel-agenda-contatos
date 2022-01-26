@@ -52,7 +52,7 @@ Route::get('/contacts',  [
 Route::get('/contacts/create', [
     ContactController::class,
     'create'
-])->middleware('auth');
+]);
 
 Route::post('/contacts/store', [
     ContactController::class,
